@@ -1,0 +1,77 @@
+GOAL:
+Sulla base di quanto visto a lezione
+modellizzare la realta' di un'universita'
+definendo colonne con nome, tipo di dato e
+vincoli di integrita' per queste entita':
+
+- dipartimento
+- corso di laurea
+- corso
+- insegnante
+- appello
+- studento
+- esito
+
+
+Ogni dipartimento e' composto da corsi di laura,
+formati da corsi, gestiti da insegnanti,
+che prevedono appelli per studenti, che avranno un esito finale
+
+NOTE: come detto in classe, in caso di ambiguita',
+cercare di immaginare una possibile realta',
+e nel caso sia una scelta poco chiara, descriverla con poche parole
+
+
+
+- dipartimento
+
+  nome_dipartimento: VARCHAR(60) ; NOT NULLABLE
+  sede: VARCHAR(80) ; NOT NULLABLE
+  email: VARCHAR(80) ; NOT NULLABLE
+  tel: SMALLINT ; NULLABLE
+
+
+- corso di laurea
+
+  nome_corso: VARCHAR(80) ; NOT NULLABLE
+  facoltà: VARCHAR(60) ; NOT NULLABLE
+  descrizione: TEXT ; NULLABLE
+  insegnamenti: TEXT ; NOT NULLABLE (un elenco dei corsi)
+  durata: TINYINT ; NOT NULLABLE
+
+
+
+- corso
+
+  professori: VARCHAR(60)
+  durata: TINYINT ; NOT NULLABLE
+  crediti_formativi: TINYINT ; NOT NULLABLE
+  argomenti: TEXT ; NULLABLE
+  data_inizio: DATE ; NULLABLE
+  data_fine: DATE ; NULLABLE
+
+- insegnante
+
+  nome: VARCHAR(30) ; NOT NULLABLE
+  cognome: VARCHAR(30) ; NOT NULLABLE
+  corsi_gestiti: TEXT ; NULLABLE
+  email: VARCHAR(60) ; NOT NULLABLE
+
+- appello
+
+  nome_studente: VARCHAR(30) ; NOT NULLABLE
+  cognome_studente: VARCHAR(30) ; NOT NULLABLE
+  matricola: SMALLINT ; NOT NULLABLE
+
+- studente
+
+  nome: VARCHAR(30) ; NOT NULLABLE
+  cognome: VARCHAR(30) ; NOT NULLABLE
+  matricola: SMALLINT ; NOT NULLABLE
+  email: VARCHAR(60) ; NOT NULLABLE
+  fuori_corso: TINYINT ; NULLABLE
+
+
+- esito
+
+  voto: TINYINT ; NOT NULLABLE
